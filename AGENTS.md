@@ -16,6 +16,14 @@ Work style: telegraph; noun-phrases ok; drop grammar; min tokens.
 - Internal links use relative paths; cross-skill refs use `../<other-skill>/…`.
 - After edits, run a quick validation pass (frontmatter present, name matches dir, links resolve).
 
+## Versioning (P0)
+- Every change to a skill bumps the plugin version in `.claude-plugin/plugin.json` and the matching `version` in `.claude-plugin/marketplace.json` — they must stay in sync.
+- Follow [semver](https://semver.org):
+  - **patch** (`0.1.0` → `0.1.1`): typo fixes, doc rewording, internal cleanup, no behaviour change for the agent invoking the skill.
+  - **minor** (`0.1.0` → `0.2.0`): new skill added, new capability inside an existing skill, new optional flag in the frontmatter.
+  - **major** (`0.1.0` → `1.0.0`): skill removed, renamed, or its activation `description` / invocation contract changes in a way that breaks consumers.
+- Bump in the same commit as the change. Tag the release (`git tag v0.2.0 && git push --tags`) when it makes sense — Claude Code's `/plugin marketplace update` then pulls cleanly.
+
 ## Naming (P0)
 - Skill dir + frontmatter `name`: kebab-case, lowercase, no underscores.
 - File names inside a skill: kebab-case for prose docs (e.g. `interface-design.md`), SCREAMING-KEBAB for short canonical reference docs (e.g. `LANGUAGE.md`, `ADR-FORMAT.md`) — match whatever the skill already uses.
