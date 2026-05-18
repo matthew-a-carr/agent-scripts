@@ -1,0 +1,11 @@
+{
+  "name": "matthew-a-carr",
+  "version": "0.1.0",
+  "description": "Matt Carr's curated agent skills.",
+  "author": {
+    "name": "Matthew Carr",
+    "url": "https://github.com/matthew-a-carr"
+  },
+  "homepage": "https://github.com/matthew-a-carr/agent-scripts",
+  "license": "MIT"
+}
