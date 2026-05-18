@@ -18,6 +18,11 @@ jobs:
           cache: true
 
       - name: Validate skills
+        # exit 0 = clean, 1 = errors (fail), 2 = warnings-only (allow), 3 = CLI bug
         run: |
+          set +e
           go tool skill-validator check --emit-annotations skills/
+          rc=$?
           go tool skill-validator check -o markdown skills/ >> "$GITHUB_STEP_SUMMARY"
+          if [ "$rc" -gt 1 ] && [ "$rc" -le 2 ]; then exit 0; fi
+          exit "$rc"
