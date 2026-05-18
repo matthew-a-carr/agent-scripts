@@ -7,13 +7,13 @@
   },
   "metadata": {
     "description": "Matt Carr's curated agent skills.",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "plugins": [
     {
       "name": "matthew-a-carr",
       "source": "./",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "Curated agent skills: engineering helpers, content tools, and forked community skills.",
       "author": {
         "name": "Matthew Carr",

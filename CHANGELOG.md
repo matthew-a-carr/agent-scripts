@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/matthew-a-carr/agent-scripts/compare/v1.0.0...v1.0.1) (2026-05-18)
+
+
+### Bug Fixes
+
+* **create-cli:** use relative reference path ([70074f6](https://github.com/matthew-a-carr/agent-scripts/commit/70074f6d2c47f7b5b64fa381d15e9be849fbe90b))
+
 ## [1.0.0](https://github.com/matthew-a-carr/agent-scripts/compare/v1.0.0...v1.0.0) (2026-05-18)
 
 
