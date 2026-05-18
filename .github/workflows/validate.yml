@@ -1,0 +1,28 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  skills:
+    name: Skill spec compliance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+          cache: true
+
+      - name: Validate skills
+        # exit 0 = clean, 1 = errors (fail), 2 = warnings-only (allow), 3 = CLI bug
+        run: |
+          set +e
+          go tool skill-validator check --emit-annotations skills/
+          rc=$?
+          go tool skill-validator check -o markdown skills/ >> "$GITHUB_STEP_SUMMARY"
+          if [ "$rc" -gt 1 ] && [ "$rc" -le 2 ]; then exit 0; fi
+          exit "$rc"
